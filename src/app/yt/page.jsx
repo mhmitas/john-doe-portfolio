@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 
-export default function Page {
+export default function Component() {
   const [videoLink, setVideoLink] = useState('')
-  const [videoLinks, setVideoLinks] = useState<string[]>([])
+  const [videoLinks, setVideoLinks] = useState([])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (videoLink.trim() !== '') {
       setVideoLinks([...videoLinks, getVideoId(videoLink)])
@@ -17,7 +17,7 @@ export default function Page {
     }
   }
 
-  const getVideoId = (url: string) => {
+  const getVideoId = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/
     const match = url.match(regExp)
     return (match && match[2].length === 11) ? match[2] : url
@@ -57,4 +57,4 @@ export default function Page {
       </div>
     </div>
   )
-}
+            }
